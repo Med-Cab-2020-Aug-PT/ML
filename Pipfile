@@ -5,15 +5,12 @@ verify_ssl = true
 
 [dev-packages]
 twine = "*"
-Cython = "*"
 
 [packages]
 pandas = "*"
 jupyter = "*"
 flask = "*"
 vadersentiment = "*"
-fortuna = "*"
-pip = "*"
 
 [requires]
 python_version = "3.8"

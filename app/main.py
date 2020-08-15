@@ -1,4 +1,4 @@
-from Fortuna import random_value
+import random
 from flask import Flask, jsonify
 import pandas as pd
 """
@@ -18,7 +18,7 @@ DATA = load_data()
 
 
 def random_recommendation():
-    return random_value(DATA)
+    return random.choice(DATA)
 
 
 @APP.route('/')
