@@ -13,6 +13,7 @@ jupyter = "*"
 flask = "*"
 vadersentiment = "*"
 fortuna = "*"
+pip = "*"
 
 [requires]
 python_version = "3.8"
