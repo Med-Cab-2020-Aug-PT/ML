@@ -4,7 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-wheel = "*"
 twine = "*"
 Cython = "*"
 
@@ -12,6 +11,7 @@ Cython = "*"
 pandas = "*"
 jupyter = "*"
 flask = "*"
+vadersentiment = "*"
 
 [requires]
 python_version = "3.8"
