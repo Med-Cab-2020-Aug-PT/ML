@@ -12,6 +12,7 @@ pandas = "*"
 jupyter = "*"
 flask = "*"
 vadersentiment = "*"
+fortuna = "*"
 
 [requires]
 python_version = "3.8"
