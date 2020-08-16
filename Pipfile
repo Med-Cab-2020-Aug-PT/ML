@@ -12,6 +12,7 @@ pandas = "*"
 jupyter = "*"
 flask = "*"
 vadersentiment = "*"
+monkeyscope = "*"
 
 [requires]
 python_version = "3.8"

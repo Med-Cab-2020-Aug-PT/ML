@@ -1,29 +1,26 @@
-import random
 from flask import Flask, jsonify
-import pandas as pd
-"""
-Input  :: Text? Dropdown Selection? Numeric? 
-Output :: type: string, description, list flavors, list effects
-"""
-
-__all__ = ('random_recommendation', 'index_route', 'APP')
+from app.data import GetData
 
 
-def load_data():
-    return pd.read_csv('cannabis.csv').to_dict(orient='records')
-
-
+__all__ = ('APP',)
 APP = Flask(__name__)
-DATA = load_data()
-
-
-def random_recommendation():
-    return random.choice(DATA)
+DATA = GetData(filename='data_sources/cleaned_cannabis.csv')
 
 
 @APP.route('/')
+@APP.route('/index.html')
 def index_route():
-    return jsonify(random_recommendation())
+    return jsonify(DATA.recommendation())
+
+
+@APP.route('/strain-by-id/<idx>', methods=['GET'])
+def strain_by_id(idx: str):
+    return jsonify(DATA.strain_by_id(int(idx)))
+
+
+@APP.route('/strain-by-name/<name>', methods=['GET'])
+def strain_by_name(name: str):
+    return jsonify(DATA.strain_by_name(name))
 
 
 if __name__ == '__main__':
