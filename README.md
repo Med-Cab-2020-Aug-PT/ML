@@ -1,22 +1,22 @@
 # MedCab
 ## Cannabis Suggestion Bot
 ### Robert Sharp
-- August 15, 2020
+- August 2020
 
 
-## User Input:
-- Effects
-- Flavor
+## User Input: STRINGS
+- Strain id
+- Strain Name
+- Desired Effects
+- Desired Flavors
+- Random Strain
 
-## Model Output:
-- Strain
+## Model Output: JSON
+- Strain Name
     - Type
     - Rating
     - Effects
-    - Flavor
-
-### Sentiment Analysis
-- Description -> Sentiment Analysis Score: 0-100
+    - Flavors
 
 ### Cosine Similarity
 - Effects -> Strain
