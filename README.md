@@ -23,7 +23,7 @@ _August 2020_
 - Nearest: Similar Strain List
 
 
-## Local Routes:
+## Public Routes:
 
 ### Random Strain Object
 - https://medcabin.herokuapp.com/
