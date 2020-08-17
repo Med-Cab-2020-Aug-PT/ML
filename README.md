@@ -23,20 +23,25 @@
 
 ## Local Routes:
 
-### Random Strain
-- http://127.0.0.1:5000/
-- http://127.0.0.1:5000/random-by-type/Sativa
+# Random Strain: JSON Object
+https://medcabin.herokuapp.com//random
+https://medcabin.herokuapp.com/random-by-type/sativa
+https://medcabin.herokuapp.com/random-by-effect/happy
+https://medcabin.herokuapp.com/random-by-flavor/sweet
 
-### List of Category Names
-- http://127.0.0.1:5000/types
-- http://127.0.0.1:5000/effects
-- http://127.0.0.1:5000/flavors
+# List of all Strains
+https://medcabin.herokuapp.com/all-strains
 
-### Strain Object Lookup Tables
-- http://127.0.0.1:5000/strain-by-id/42
-- http://127.0.0.1:5000/strain-by-name/Wedding%20Cake
+# List of Names
+https://medcabin.herokuapp.com/types
+https://medcabin.herokuapp.com/effects
+https://medcabin.herokuapp.com/flavors
 
-### List of Strain Names having a given trait
-- http://127.0.0.1:5000/strains-by-effect/Happy
-- http://127.0.0.1:5000/strains-by-flavor/Sweet
-- http://127.0.0.1:5000/strains-by-type/Sativa
+# Strain Object Lookup Tables
+https://medcabin.herokuapp.com/strain-by-id/381
+https://medcabin.herokuapp.com/strain-by-name/Fruit%20Loops
+
+# List of Names:
+https://medcabin.herokuapp.com/strains-by-effect/happy
+https://medcabin.herokuapp.com/strains-by-flavor/sweet
+https://medcabin.herokuapp.com/strains-by-type/sativa

@@ -8,6 +8,7 @@ Ring.data = StrainData(filename='data/cannabis.csv')
 
 
 @Ring.route('/')
+@Ring.route('/random')
 @Ring.route('/index.html')
 def index():
     """ Default Endpoint - Returns a random Strain
