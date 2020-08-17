@@ -25,6 +25,7 @@
 
 ### Random Strain
 - http://127.0.0.1:5000/
+- http://127.0.0.1:5000/random-by-type/Sativa
 
 ### List of Category Names
 - http://127.0.0.1:5000/types

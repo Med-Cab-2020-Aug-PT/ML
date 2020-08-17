@@ -1,20 +1,33 @@
+""" StrainData for MedCab Project
+Data Science Unit 4 Build Week
+Robert Sharp
+August 2020
+"""
 from collections import defaultdict
 from typing import List
 from pandas import read_csv
-from Fortuna import random_value
+from Fortuna import random_value, FlexCat
 
 
 class StrainData:
     """ Primary Data Object for MedCab """
+    __slots__ = (
+        'df', 'data', 'effect_lookup', 'flavor_lookup',
+        'type_lookup', 'name_lookup', 'random_by_type',
+        'random_by_effect', 'random_by_flavor',
+    )
 
     def __init__(self, filename):
-        self.data = read_csv(filename).to_dict(orient='records')
-
+        self.df = read_csv(filename)
+        self.df['Type'] = self.df['Type'].str.title()
+        self.data = self.df.to_dict(orient='records')
         self.effect_lookup = defaultdict(list)
         self.flavor_lookup = defaultdict(list)
         self.type_lookup = defaultdict(list)
-
+        self.name_lookup = dict()
         for strain in self.data:
+            strain['Strain'] = self._fix_string(strain['Strain'])
+            strain['Description'] = self._fix_string(strain['Description'])
             self.type_lookup[strain['Type']].append(strain['Strain'])
             strain['Effects'] = strain['Effects'].split(',')
             for effect in strain['Effects']:
@@ -22,8 +35,48 @@ class StrainData:
             strain['Flavors'] = strain['Flavors'].split(',')
             for flavor in strain['Flavors']:
                 self.flavor_lookup[flavor].append(strain['Strain'])
+            self.name_lookup[strain['Strain']] = strain
+        self.random_by_type = FlexCat(
+            {k: v for k, v in self.type_lookup.items()},
+            key_bias='truffle_shuffle', val_bias='truffle_shuffle',
+        )
+        self.random_by_effect = FlexCat(
+            {k: v for k, v in self.effect_lookup.items()},
+            key_bias='truffle_shuffle', val_bias='truffle_shuffle',
+        )
+        self.random_by_flavor = FlexCat(
+            {k: v for k, v in self.flavor_lookup.items()},
+            key_bias='truffle_shuffle', val_bias='truffle_shuffle',
+        )
 
-        self.name_lookup = {obj['Strain']: obj for obj in self.data}
+    @staticmethod
+    def _fix_string(input_string: str) -> str:
+        """ Unicode Field Medic Solution ...
+
+        @param input_string: str
+        @return: str
+        """
+        return input_string.replace(
+            '\u2018', "'",
+        ).replace(
+            '\u2019', "'",
+        ).replace(
+            '\u201c', "'",
+        ).replace(
+            '\u201d', "'",
+        ).replace(
+            '\u00f1', "n",
+        ).replace(
+            '\u2013', "-",
+        ).replace(
+            '\u2014', "-",
+        ).replace(
+            '\u014d', "o",
+        ).replace(
+            '\u2026', '-',
+        ).replace(
+            '\u0101', 'a',
+        )
 
     def random_strain(self) -> dict:
         """ Returns a random Strain
@@ -69,13 +122,13 @@ class StrainData:
         """
         return self.name_lookup[name]
 
-    def strains_by_type(self, strain_type: str) -> List[dict]:
+    def strains_by_type(self, strain_type: str) -> List[str]:
         """ List of Strains of the desired Type
 
         @param strain_type: str
         @return: List[str]
         """
-        return self.type_lookup[strain_type]
+        return self.type_lookup[strain_type.title()]
 
     def strains_by_rating(self, rating: str) -> List[str]:
         """ List of Strains of the desired Rating or higher
