@@ -1,7 +1,7 @@
 # MedCab
-## Cannabis Suggestion Bot
-### Robert Sharp
-- August 2020
+### Cannabis Suggestion Bot
+#### Robert Sharp
+_August 2020_
 
 
 ## User Input: String
@@ -20,6 +20,7 @@
 - Flavors List
 - Description Text
 - Index Number (0 - 2154)
+- Nearest List
 
 
 ## Local Routes:
@@ -42,11 +43,11 @@
 - https://medcabin.herokuapp.com/strain-by-id/381
 - https://medcabin.herokuapp.com/strain-by-name/Fruit-Loops
 
-### List of Names:
+### List of Names
 - https://medcabin.herokuapp.com/strains-by-effect/happy
 - https://medcabin.herokuapp.com/strains-by-flavor/sweet
 - https://medcabin.herokuapp.com/strains-by-type/sativa
 
-    
+
 # List of the 5 Nearest Strains
 - https://medcabin.herokuapp.com/nearest/Wedding-Cake
