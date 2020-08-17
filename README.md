@@ -49,5 +49,5 @@ _August 2020_
 - https://medcabin.herokuapp.com/strains-by-type/sativa
 
 
-# List of the 5 Nearest Strains
+# List of the 4 Nearest Strains
 - https://medcabin.herokuapp.com/nearest/wedding-cake
