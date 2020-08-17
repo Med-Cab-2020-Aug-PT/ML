@@ -36,9 +36,10 @@ def strain_by_name(name: str):
 
 @Ring.route('/strains')
 def strains():
-    """ Returns a JSON dictionary of Strains
-    @return: JSON Obj: Dict[Dict] """
-    return jsonify(Ring.data.name_lookup)
+    """ Returns a List of Strain Dicts,
+        ordered by Rating highest to lowest
+    @return: JSON Obj: List[Dict] """
+    return jsonify(Ring.data.data)
 
 
 @Ring.route('/types')
