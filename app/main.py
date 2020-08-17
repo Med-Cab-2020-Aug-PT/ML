@@ -36,7 +36,8 @@ def strain_by_name(name: str):
     @param name: String
     @return: JSON Obj: dict
     """
-    return jsonify(Ring.data.strain_by_name(name.replace('-', ' ')))
+    clean_name = name.replace('-', ' ').title()
+    return jsonify(Ring.data.strain_by_name(clean_name))
 
 
 @Ring.route('/strains')
@@ -137,7 +138,7 @@ def nearest(name: str):
     @param name: str
     @return: JSON List[Dict]
     """
-    clean_name = name.replace('-', ' ')
+    clean_name = name.replace('-', ' ').title()
     if clean_name in Ring.data.name_lookup.keys():
         strain_names = Ring.data.strain_by_name(clean_name)['Nearest']
         return jsonify([
@@ -160,7 +161,7 @@ if __name__ == '__main__':
     
     # Strain Object Lookup Tables: Object
     http://127.0.0.1:5000/strain-by-id/381
-    http://127.0.0.1:5000/strain-by-name/Fruit-Loops
+    http://127.0.0.1:5000/strain-by-name/fruit-loops
     
     # List of Names: List[String]
     http://127.0.0.1:5000/types
@@ -175,6 +176,6 @@ if __name__ == '__main__':
     http://127.0.0.1:5000/strains
     
     # List of the 5 Nearest Strains
-    http://127.0.0.1:5000/nearest/Wedding-Cake
+    http://127.0.0.1:5000/nearest/wedding-cake
     """
     Ring.run(debug=True)
