@@ -35,8 +35,8 @@ def strain_by_name(name: str):
     return jsonify(Ring.data.strain_by_name(name))
 
 
-@Ring.route('/all-strains')
-def all_strains():
+@Ring.route('/strains')
+def strains():
     """ Returns a JSON dictionary of Strains
     @return: JSON Obj: Dict[Dict] """
     return jsonify(Ring.data.name_lookup)
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     http://127.0.0.1:5000/random-by-flavor/sweet
     
     # List of all Strains
-    http://127.0.0.1:5000/all-strains
+    http://127.0.0.1:5000/strains
 
     # List of Names
     http://127.0.0.1:5000/types
