@@ -32,7 +32,7 @@ def strain_by_name(name: str):
     @param name: String
     @return: JSON Obj: dict
     """
-    return jsonify(Ring.data.strain_by_name(name))
+    return jsonify(Ring.data.strain_by_name(name.replace('-', ' ')))
 
 
 @Ring.route('/strains')
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     http://127.0.0.1:5000/random-by-effect/happy
     http://127.0.0.1:5000/random-by-flavor/sweet
     
-    # List of all Strains
+    # List of all Strain Objects
     http://127.0.0.1:5000/strains
 
     # List of Names
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     
     # Strain Object Lookup Tables
     http://127.0.0.1:5000/strain-by-id/381
-    http://127.0.0.1:5000/strain-by-name/Fruit%20Loops
+    http://127.0.0.1:5000/strain-by-name/Fruit-Loops
     
     # List of Names:
     http://127.0.0.1:5000/strains-by-effect/happy

@@ -12,27 +12,27 @@ from Fortuna import random_value, FlexCat
 class StrainData:
     """ Primary Data Object for MedCab """
     __slots__ = (
-        'df', 'data', 'effect_lookup', 'flavor_lookup',
-        'type_lookup', 'name_lookup', 'random_by_type',
-        'random_by_effect', 'random_by_flavor',
+        'df', 'data', 'effect_lookup', 'flavor_lookup', 'type_lookup',
+        'name_lookup', 'random_by_type', 'random_by_effect', 'random_by_flavor',
     )
 
     def __init__(self, filename):
         self.df = read_csv(filename)
         self.df['Type'] = self.df['Type'].str.title()
+        self.df['Flavors'] = self.df['Flavors'].str.replace('/', ',')
+        self.df['Strain'] = self.df['Strain'].apply(self._fix_string)
+        self.df['Description'] = self.df['Description'].apply(self._fix_string)
         self.data = self.df.to_dict(orient='records')
         self.effect_lookup = defaultdict(list)
         self.flavor_lookup = defaultdict(list)
         self.type_lookup = defaultdict(list)
         self.name_lookup = dict()
         for strain in self.data:
-            strain['Strain'] = self._fix_string(strain['Strain'])
-            strain['Description'] = self._fix_string(strain['Description'])
-            self.type_lookup[strain['Type']].append(strain['Strain'])
+            strain['Flavors'] = strain['Flavors'].split(',')
             strain['Effects'] = strain['Effects'].split(',')
+            self.type_lookup[strain['Type']].append(strain['Strain'])
             for effect in strain['Effects']:
                 self.effect_lookup[effect].append(strain['Strain'])
-            strain['Flavors'] = strain['Flavors'].split(',')
             for flavor in strain['Flavors']:
                 self.flavor_lookup[flavor].append(strain['Strain'])
             self.name_lookup[strain['Strain']] = strain
@@ -50,13 +50,13 @@ class StrainData:
         )
 
     @staticmethod
-    def _fix_string(input_string: str) -> str:
+    def _fix_string(string: str) -> str:
         """ Unicode Field Medic Solution ...
 
-        @param input_string: str
+        @param string: str
         @return: str
         """
-        return input_string.replace(
+        return string.replace(
             '\u2018', "'",
         ).replace(
             '\u2019', "'",
