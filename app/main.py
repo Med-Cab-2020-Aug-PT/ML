@@ -1,3 +1,7 @@
+""" MedCab
+Robert Sharp
+August 2020
+"""
 from flask import Flask, jsonify
 from app.data import StrainData
 
@@ -126,6 +130,23 @@ def random_by_flavor(flavor):
     )
 
 
+@Ring.route('/nearest/<name>')
+def nearest(name: str):
+    """ Returns the 5 Nearest Strains
+    @param name: str
+    @return: JSON List[Dict]
+    """
+    clean_name = name.replace('-', ' ')
+    if clean_name in Ring.data.name_lookup.keys():
+        strain_names = Ring.data.strain_by_name(clean_name)['Nearest']
+        return jsonify([
+            Ring.data.strain_by_name(strain)
+            for strain in strain_names
+        ])
+    else:
+        return jsonify("Unknown Strain")
+
+
 if __name__ == '__main__':
     """
     # Local Routes:
@@ -152,5 +173,7 @@ if __name__ == '__main__':
     # List of all Strains: Object {Name: Strain}
     http://127.0.0.1:5000/strains
     
+    # List of the 5 Nearest Strains
+    http://127.0.0.1:5000/nearest/Wedding-Cake
     """
     Ring.run(debug=True)

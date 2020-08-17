@@ -46,3 +46,7 @@
 - https://medcabin.herokuapp.com/strains-by-effect/happy
 - https://medcabin.herokuapp.com/strains-by-flavor/sweet
 - https://medcabin.herokuapp.com/strains-by-type/sativa
+
+    
+# List of the 5 Nearest Strains
+- https://medcabin.herokuapp.com/nearest/Wedding-Cake

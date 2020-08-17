@@ -14,7 +14,7 @@ class StrainData:
     """ Primary Data Object for MedCab """
 
     __slots__ = (
-        'data', 'effect_lookup', 'flavor_lookup', 'type_lookup',
+        'data', 'effect_lookup', 'flavor_lookup', 'type_lookup', 'id_lookup',
         'name_lookup', 'random_by_type', 'random_by_effect', 'random_by_flavor',
     )
 
@@ -32,9 +32,11 @@ class StrainData:
         self.flavor_lookup = defaultdict(list)        # Dict {Key: List[String]}
         self.type_lookup = defaultdict(list)          # Dict {Key: List[String]}
         self.name_lookup = dict()                # Dict {Key: Dict {Key: Value}}
+        self.id_lookup = defaultdict(list)
 
         # Fill Lookup Tables
         for strain in self.data:
+            strain['Nearest'] = self._names_by_ids(strain['Nearest'].split(','))
             strain['Effects'] = strain['Effects'].split(',')
             for effect in strain['Effects']:
                 self.effect_lookup[effect].append(strain['Strain'])
@@ -117,9 +119,16 @@ class StrainData:
         """
         return self.flavor_lookup[flavor]
 
+    def _names_by_ids(self, ids):
+        """ Returns a list of names based on a list of ids, internal only
+        @param ids: list of ids
+        @return: list of names
+        """
+        return [self.data[int(idx)]['Strain'] for idx in ids]
+
     @staticmethod
     def _fix_string(string: str) -> str:
-        """ Unicode Field Medic Solution ... Let's not talk about this.
+        """ Unicode Field Medic Solution, internal only
         @param string: str
         @return: str
         """
