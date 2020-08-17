@@ -48,6 +48,5 @@ _August 2020_
 - https://medcabin.herokuapp.com/strains-by-flavor/sweet
 - https://medcabin.herokuapp.com/strains-by-type/sativa
 
-
-# 4 Nearest Strains (NLP of Description KNN Model)
+### 4 Nearest Strains - NLP of Description KNN Model
 - https://medcabin.herokuapp.com/nearest/wedding-cake
