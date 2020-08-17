@@ -4,7 +4,7 @@ from app.data import StrainData
 
 """ One Ring to rule them all, and in the darkness - bind them! """
 Ring = Flask(__name__)
-Ring.data = StrainData(filename='data/cannabis_new.csv')
+Ring.data = StrainData(filename='data/cannabis.csv')
 
 
 @Ring.route('/')
