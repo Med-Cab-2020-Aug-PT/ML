@@ -26,7 +26,7 @@ _August 2020_
 ## Public Routes:
 
 ### Random Strain Object
-- https://medcabin.herokuapp.com/
+- https://medcabin.herokuapp.com
 - https://medcabin.herokuapp.com/random-by-type/sativa
 - https://medcabin.herokuapp.com/random-by-effect/happy
 - https://medcabin.herokuapp.com/random-by-flavor/sweet
@@ -48,5 +48,5 @@ _August 2020_
 - https://medcabin.herokuapp.com/strains-by-flavor/sweet
 - https://medcabin.herokuapp.com/strains-by-type/sativa
 
-### 4 Nearest Strains - NLP of Description KNN Model
+### Five Most Similar Strains - NLP KNN Model
 - https://medcabin.herokuapp.com/nearest/wedding-cake

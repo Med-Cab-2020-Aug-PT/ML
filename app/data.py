@@ -36,6 +36,7 @@ class StrainData:
         # Fill Lookup Tables
         for strain in self.data:
             strain['Nearest'] = self._names_by_ids(strain['Nearest'].split(','))
+            strain['Nearest'].remove(strain['Strain'])
             strain['Effects'] = strain['Effects'].split(',')
             for effect in strain['Effects']:
                 self.effect_lookup[effect].append(strain['Strain'])
