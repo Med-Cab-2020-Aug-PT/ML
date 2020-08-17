@@ -20,7 +20,7 @@ _August 2020_
 - Flavors List
 - Description Text
 - Index Number (0 - 2154)
-- Nearest List
+- Nearest: Similar Strain List
 
 
 ## Local Routes:
@@ -41,7 +41,7 @@ _August 2020_
 
 ### Strain Object Lookup Tables
 - https://medcabin.herokuapp.com/strain-by-id/381
-- https://medcabin.herokuapp.com/strain-by-name/Fruit-Loops
+- https://medcabin.herokuapp.com/strain-by-name/fruit-loops
 
 ### List of Names
 - https://medcabin.herokuapp.com/strains-by-effect/happy
@@ -50,4 +50,4 @@ _August 2020_
 
 
 # List of the 5 Nearest Strains
-- https://medcabin.herokuapp.com/nearest/Wedding-Cake
+- https://medcabin.herokuapp.com/nearest/wedding-cake
