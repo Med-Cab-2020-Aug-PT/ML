@@ -1,1 +1,2 @@
-from app.main import APP
+from app.main import Ring
+__all__ = ('Ring',)

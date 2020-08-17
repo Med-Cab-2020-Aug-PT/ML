@@ -5,19 +5,37 @@
 
 
 ## User Input: STRINGS
+- Random Strain
 - Strain id
 - Strain Name
-- Desired Effects
-- Desired Flavors
-- Random Strain
+- Desired Effect
+- Desired Flavor
 
-## Model Output: JSON
+## Strain Object: JSON dict
 - Strain Name
-    - Type
-    - Rating
-    - Effects
-    - Flavors
+- Strain Type
+- User Rating
+- Effects List
+- Flavors List
+- Description Text
+- Index Number
 
-### Cosine Similarity
-- Effects -> Strain
-- Flavor -> Strain
+
+## Local Routes:
+
+### Random Strain
+- http://127.0.0.1:5000/
+
+### List of Category Names
+- http://127.0.0.1:5000/types
+- http://127.0.0.1:5000/effects
+- http://127.0.0.1:5000/flavors
+
+### Strain Object Lookup Tables
+- http://127.0.0.1:5000/strain-by-id/42
+- http://127.0.0.1:5000/strain-by-name/Wedding%20Cake
+
+### List of Strain Names having a given trait
+- http://127.0.0.1:5000/strains-by-effect/Happy
+- http://127.0.0.1:5000/strains-by-flavor/Sweet
+- http://127.0.0.1:5000/strains-by-type/Sativa
