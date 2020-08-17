@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 twine = "*"
 jupyter = "*"
+spacy = "*"
+scikit-learn = "*"
 
 [packages]
 cython = "*"
@@ -13,9 +15,6 @@ gunicorn = "*"
 pandas = "*"
 flask = "*"
 fortuna = "*"
-monkeyscope = "*"
-spacy = "*"
-scikit-learn = "*"
 
 [requires]
 python_version = "3.8"
