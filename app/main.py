@@ -153,17 +153,17 @@ if __name__ == '__main__':
     """
     # Local Routes:
     
-    # Random Strain: Object
+    # Random Strain
     http://127.0.0.1:5000/random
     http://127.0.0.1:5000/random-by-type/sativa
     http://127.0.0.1:5000/random-by-effect/happy
     http://127.0.0.1:5000/random-by-flavor/sweet
     
-    # Strain Object Lookup Tables: Object
+    # Strain Object Lookup Tables
     http://127.0.0.1:5000/strain-by-id/381
     http://127.0.0.1:5000/strain-by-name/fruit-loops
     
-    # List of Names: List[String]
+    # List of Names
     http://127.0.0.1:5000/types
     http://127.0.0.1:5000/effects
     http://127.0.0.1:5000/flavors
@@ -172,7 +172,7 @@ if __name__ == '__main__':
     http://127.0.0.1:5000/strains-by-flavor/sweet
     http://127.0.0.1:5000/strains-by-type/sativa
 
-    # List of all Strains: Object {Name: Strain}
+    # List of all Strains
     http://127.0.0.1:5000/strains
     
     # List of the 5 Nearest Strains
