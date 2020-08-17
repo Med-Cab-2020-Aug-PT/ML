@@ -5,7 +5,6 @@ August 2020
 """
 from collections import defaultdict
 from typing import List
-
 from Fortuna import random_value, FlexCat
 from pandas import read_csv
 
