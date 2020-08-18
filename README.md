@@ -4,26 +4,18 @@
 _August 2020_
 
 
-## User Input: String
-- Random Strain
-- Strain id
-- Strain Name
-- Desired Effect
-- Desired Flavor
-- Desired Type
-
-## Strain Object: JSON Dictionary
-- Strain Name
-- Strain Type
-- User Rating (0.0 - 5.0)
-- Effects List
-- Flavors List
-- Description Text
-- Index Number (0 - 2154)
-- Nearest: Similar Strain List
+## Cannabis Strain: JSON Object
+- Strain: Name
+- Type: Family (Sativa, Indica, Hybrid)
+- Rating: Float (0.0 - 5.0)
+- Effects: List
+- Flavors: List
+- Description: Text
+- Index: Integer (0 - 2154)
+- Nearest: List
 
 
-## Public Routes:
+## Public Endpoints:
 
 ### Random Strain Object
 - https://medcabin.herokuapp.com

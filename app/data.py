@@ -25,7 +25,7 @@ class StrainData:
         df['Strain'] = df['Strain'].apply(self._fix_string)
         df['Description'] = df['Description'].apply(self._fix_string)
 
-        # Init Lookup Tables
+        # Initialize Lookup Tables
         self.data = df.to_dict(orient='records')      # List[Dict {Key: Value}]
         self.effect_lookup = defaultdict(list)        # Dict {Key: List[String]}
         self.flavor_lookup = defaultdict(list)        # Dict {Key: List[String]}
@@ -33,7 +33,7 @@ class StrainData:
         self.name_lookup = dict()                # Dict {Key: Dict {Key: Value}}
         self.id_lookup = defaultdict(list)
 
-        # Fill Lookup Tables
+        # Populate Lookup Tables
         for strain in self.data:
             strain['Nearest'] = self._names_by_ids(strain['Nearest'].split(','))
             strain['Nearest'].remove(strain['Strain'])
@@ -49,9 +49,18 @@ class StrainData:
             self.name_lookup[strain['Strain']] = strain
 
         # Setup Randomizers
-        self.random_by_type = FlexCat({k: v for k, v in self.type_lookup.items()})
-        self.random_by_effect = FlexCat({k: v for k, v in self.effect_lookup.items()})
-        self.random_by_flavor = FlexCat({k: v for k, v in self.flavor_lookup.items()})
+        self.random_by_type = FlexCat(
+            {k: v for k, v in self.type_lookup.items()},
+            val_bias='truffle_shuffle',
+        )
+        self.random_by_effect = FlexCat(
+            {k: v for k, v in self.effect_lookup.items()},
+            val_bias='truffle_shuffle',
+        )
+        self.random_by_flavor = FlexCat(
+            {k: v for k, v in self.flavor_lookup.items()},
+            val_bias='truffle_shuffle',
+        )
 
     def random_strain(self) -> dict:
         """ Returns a random Strain
@@ -97,13 +106,6 @@ class StrainData:
         @return: List[str]
         """
         return self.type_lookup[strain_type]
-
-    def strains_by_rating(self, rating: str) -> List[str]:
-        """ List of Strains of the desired Rating or higher
-        @param rating: str
-        @return: List[str]
-        """
-        return self.data
 
     def strains_by_effect(self, effect: str) -> List[str]:
         """ List of Strains that produce the desired Effect
