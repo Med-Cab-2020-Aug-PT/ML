@@ -148,36 +148,36 @@ def nearest(name: str):
             for strain in strain_names
         ])
     else:
-        return jsonify("Unknown Strain")
+        return jsonify(f"Unknown Strain: {clean_name}")
 
 
 if __name__ == '__main__':
     """
-    # Local Routes:
+    ## Local Routes:
     
-    # Random Strain
-    http://127.0.0.1:5000/random
-    http://127.0.0.1:5000/random-by-type/sativa
-    http://127.0.0.1:5000/random-by-effect/happy
-    http://127.0.0.1:5000/random-by-flavor/sweet
+    ### Primary URL
+    - http://127.0.0.1:5000/
     
-    # Strain Object Lookup Tables
-    http://127.0.0.1:5000/strain-by-id/381
-    http://127.0.0.1:5000/strain-by-name/fruit-loops
+    ### Strain Object Lookup Tables
+    - http://127.0.0.1:5000/strain-by-id/381
+    - http://127.0.0.1:5000/strain-by-name/fruit-loops
     
-    # List of Names
-    http://127.0.0.1:5000/types
-    http://127.0.0.1:5000/effects
-    http://127.0.0.1:5000/flavors
+    ### Random Strain Object
+    - http://127.0.0.1:5000/random-by-type/sativa
+    - http://127.0.0.1:5000/random-by-effect/happy
+    - http://127.0.0.1:5000/random-by-flavor/sweet
     
-    http://127.0.0.1:5000/strains-by-effect/dry-mouth
-    http://127.0.0.1:5000/strains-by-flavor/sweet
-    http://127.0.0.1:5000/strains-by-type/sativa
-
-    # List of all Strains
-    http://127.0.0.1:5000/strains
+    ### List of Names by Category
+    - http://127.0.0.1:5000/types
+    - http://127.0.0.1:5000/effects
+    - http://127.0.0.1:5000/flavors
     
-    # List of the 5 Nearest Strains
-    http://127.0.0.1:5000/nearest/wedding-cake
+    ### List of Names by Subcategory
+    - http://127.0.0.1:5000/strains-by-effect/happy
+    - http://127.0.0.1:5000/strains-by-flavor/sweet
+    - http://127.0.0.1:5000/strains-by-type/sativa
+    
+    ### Five Most Similar Strains - NLP KNN Model
+    - http://127.0.0.1:5000/nearest/wedding-cake
     """
     Ring.run(debug=True)
