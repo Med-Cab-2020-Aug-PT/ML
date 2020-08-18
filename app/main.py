@@ -78,7 +78,8 @@ def strains_by_effect(effect):
     @param effect: str
     @return: JSON Obj: List[str]
     """
-    return jsonify(Ring.data.strains_by_effect(effect.title()))
+    clean_name = effect.replace('-', ' ').title()
+    return jsonify(Ring.data.strains_by_effect(clean_name))
 
 
 @Ring.route('/strains-by-flavor/<flavor>')
@@ -116,8 +117,9 @@ def random_by_effect(effect):
     @param effect: str
     @return: JSON Obj
     """
+    clean_name = effect.replace('-', ' ').title()
     return jsonify(
-        Ring.data.strain_by_name(Ring.data.random_by_effect(effect.title()))
+        Ring.data.strain_by_name(Ring.data.random_by_effect(clean_name))
     )
 
 
@@ -168,7 +170,7 @@ if __name__ == '__main__':
     http://127.0.0.1:5000/effects
     http://127.0.0.1:5000/flavors
     
-    http://127.0.0.1:5000/strains-by-effect/happy
+    http://127.0.0.1:5000/strains-by-effect/dry-mouth
     http://127.0.0.1:5000/strains-by-flavor/sweet
     http://127.0.0.1:5000/strains-by-type/sativa
 
