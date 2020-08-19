@@ -1,6 +1,6 @@
 # MedCab
 ### Cannabis Suggestion Bot
-#### Robert Sharp
+#### Jisha Obukwelu & Robert Sharp
 _August 2020_
 
 
