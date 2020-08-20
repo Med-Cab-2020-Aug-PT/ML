@@ -22,7 +22,7 @@ class StrainData:
         df = read_csv(filename)
         df['Type'] = df['Type'].str.title()
         df['Flavors'] = df['Flavors'].str.replace('/', ',')
-        df['Strain'] = df['Strain'].apply(self._fix_string)
+        df['Name'] = df['Name'].apply(self._fix_string)
         df['Description'] = df['Description'].apply(self._fix_string)
 
         # Initialize Lookup Tables
@@ -36,17 +36,16 @@ class StrainData:
         # Populate Lookup Tables
         for strain in self.data:
             strain['Nearest'] = self._names_by_ids(strain['Nearest'].split(','))
-            strain['Nearest'].remove(strain['Strain'])
             strain['Effects'] = strain['Effects'].split(',')
             for effect in strain['Effects']:
-                self.effect_lookup[effect].append(strain['Strain'])
+                self.effect_lookup[effect].append(strain['Name'])
 
             strain['Flavors'] = strain['Flavors'].split(',')
             for flavor in strain['Flavors']:
-                self.flavor_lookup[flavor].append(strain['Strain'])
+                self.flavor_lookup[flavor].append(strain['Name'])
 
-            self.type_lookup[strain['Type']].append(strain['Strain'])
-            self.name_lookup[strain['Strain']] = strain
+            self.type_lookup[strain['Type']].append(strain['Name'])
+            self.name_lookup[strain['Name']] = strain
 
         # Setup Randomizers
         self.random_by_type = FlexCat(
@@ -126,7 +125,7 @@ class StrainData:
         @param ids: list of ids
         @return: list of names
         """
-        return [self.data[int(idx)]['Strain'] for idx in ids]
+        return [self.data[int(idx)]['Name'] for idx in ids]
 
     @staticmethod
     def _fix_string(string: str) -> str:
