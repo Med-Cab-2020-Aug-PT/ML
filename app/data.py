@@ -6,7 +6,7 @@ August 2020
 from collections import defaultdict
 from typing import List
 from Fortuna import random_value, FlexCat
-from pandas import read_csv
+import pandas as pd
 
 
 class StrainData:
@@ -19,11 +19,7 @@ class StrainData:
 
     def __init__(self, filename):
         # Temporary Raw Data
-        df = read_csv(filename)
-        df['Type'] = df['Type'].str.title()
-        df['Flavors'] = df['Flavors'].str.replace('/', ',')
-        df['Strain'] = df['Strain'].apply(self._fix_string)
-        df['Description'] = df['Description'].apply(self._fix_string)
+        df = pd.read_csv(filename)
 
         # Initialize Lookup Tables
         self.data = df.to_dict(orient='records')      # List[Dict {Key: Value}]
@@ -36,17 +32,16 @@ class StrainData:
         # Populate Lookup Tables
         for strain in self.data:
             strain['Nearest'] = self._names_by_ids(strain['Nearest'].split(','))
-            strain['Nearest'].remove(strain['Strain'])
             strain['Effects'] = strain['Effects'].split(',')
             for effect in strain['Effects']:
-                self.effect_lookup[effect].append(strain['Strain'])
+                self.effect_lookup[effect].append(strain['Name'])
 
             strain['Flavors'] = strain['Flavors'].split(',')
             for flavor in strain['Flavors']:
-                self.flavor_lookup[flavor].append(strain['Strain'])
+                self.flavor_lookup[flavor].append(strain['Name'])
 
-            self.type_lookup[strain['Type']].append(strain['Strain'])
-            self.name_lookup[strain['Strain']] = strain
+            self.type_lookup[strain['Type']].append(strain['Name'])
+            self.name_lookup[strain['Name']] = strain
 
         # Setup Randomizers
         self.random_by_type = FlexCat(
@@ -126,32 +121,4 @@ class StrainData:
         @param ids: list of ids
         @return: list of names
         """
-        return [self.data[int(idx)]['Strain'] for idx in ids]
-
-    @staticmethod
-    def _fix_string(string: str) -> str:
-        """ Unicode Field Medic Solution, internal only
-        @param string: str
-        @return: str
-        """
-        return string.replace(
-            '\u2018', "'",
-        ).replace(
-            '\u2019', "'",
-        ).replace(
-            '\u201c', "'",
-        ).replace(
-            '\u201d', "'",
-        ).replace(
-            '\u00f1', "n",
-        ).replace(
-            '\u2013', "-",
-        ).replace(
-            '\u2014', "-",
-        ).replace(
-            '\u014d', "o",
-        ).replace(
-            '\u2026', '-',
-        ).replace(
-            '\u0101', 'a',
-        )
+        return [self.data[int(idx)]['Name'] for idx in ids]

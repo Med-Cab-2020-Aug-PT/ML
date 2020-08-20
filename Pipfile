@@ -9,6 +9,9 @@ gunicorn = "*"
 pandas = "*"
 flask = "*"
 fortuna = "*"
+scikit-learn = "*"
+spacy = "*"
+en-core-web-lg = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-2.3.1/en_core_web_lg-2.3.1.tar.gz"}
 
 [requires]
 python_version = "3.8"
