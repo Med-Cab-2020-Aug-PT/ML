@@ -9,6 +9,8 @@ gunicorn = "*"
 pandas = "*"
 flask = "*"
 fortuna = "*"
+scikit-learn = "*"
+spacy = "*"
 
 [requires]
 python_version = "3.8"

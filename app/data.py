@@ -6,7 +6,7 @@ August 2020
 from collections import defaultdict
 from typing import List
 from Fortuna import random_value, FlexCat
-from pandas import read_csv
+import pandas as pd
 
 
 class StrainData:
@@ -19,11 +19,7 @@ class StrainData:
 
     def __init__(self, filename):
         # Temporary Raw Data
-        df = read_csv(filename)
-        df['Type'] = df['Type'].str.title()
-        df['Flavors'] = df['Flavors'].str.replace('/', ',')
-        df['Name'] = df['Name'].apply(self._fix_string)
-        df['Description'] = df['Description'].apply(self._fix_string)
+        df = pd.read_csv(filename)
 
         # Initialize Lookup Tables
         self.data = df.to_dict(orient='records')      # List[Dict {Key: Value}]
@@ -126,31 +122,3 @@ class StrainData:
         @return: list of names
         """
         return [self.data[int(idx)]['Name'] for idx in ids]
-
-    @staticmethod
-    def _fix_string(string: str) -> str:
-        """ Unicode Field Medic Solution, internal only
-        @param string: str
-        @return: str
-        """
-        return string.replace(
-            '\u2018', "'",
-        ).replace(
-            '\u2019', "'",
-        ).replace(
-            '\u201c', "'",
-        ).replace(
-            '\u201d', "'",
-        ).replace(
-            '\u00f1', "n",
-        ).replace(
-            '\u2013', "-",
-        ).replace(
-            '\u2014', "-",
-        ).replace(
-            '\u014d', "o",
-        ).replace(
-            '\u2026', '-',
-        ).replace(
-            '\u0101', 'a',
-        )

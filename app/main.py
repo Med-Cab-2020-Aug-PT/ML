@@ -21,6 +21,11 @@ def index():
     return jsonify(Ring.data.random_strain())
 
 
+# @Ring.route('/recommend/<user_input>')
+# def recommend(user_input: str):
+#     return jsonify(Ring.data.recommend(user_input))
+
+
 @Ring.route('/strain-by-id/<idx>')
 def strain_by_id(idx: str):
     """ Strain Details, Id Lookup Table
