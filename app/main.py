@@ -8,7 +8,7 @@ from app.data import StrainData
 
 
 """ One Ring to rule them all, and in the darkness - bind them! """
-filename = '../data/cannabis.csv'
+filename = 'data/cannabis.csv'
 Ring = Flask(__name__)
 Ring.data = StrainData(filename)
 
