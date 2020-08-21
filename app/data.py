@@ -24,8 +24,8 @@ class StrainData:
         df = pd.read_csv(filename)
 
         # Pickled Models
-        self.tfidf = pickle.load(open('../pickles/tfidf.pickle', 'rb'))
-        self.nearest_one = pickle.load(open('../pickles/nearest.pickle', 'rb'))
+        self.tfidf = pickle.load(open('pickles/tfidf.pickle', 'rb'))
+        self.nearest_one = pickle.load(open('pickles/nearest.pickle', 'rb'))
 
         # Initialize Lookup Tables
         self.data = df.to_dict(orient='records')      # List[Dict {Key: Value}]
