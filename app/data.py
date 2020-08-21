@@ -16,7 +16,7 @@ class StrainData:
     __slots__ = (
         'data', 'effect_lookup', 'flavor_lookup', 'type_lookup', 'id_lookup',
         'name_lookup', 'random_by_type', 'random_by_effect', 'random_by_flavor',
-        'tfidf', 'nearest_one'
+        'tfidf', 'nearest_one',
     )
 
     def __init__(self, filename):

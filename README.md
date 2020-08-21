@@ -19,7 +19,7 @@ _August 2020_
 
 ### Primary URL
 - https://medcabin.herokuapp.com/
-- https://medcabin.herokuapp.com/search/<arbitrary_user_text>
+- https://medcabin.herokuapp.com/search/i%20suffer%20from%20a%20headaches
 
 ### Strain Object Lookup Tables
 - https://medcabin.herokuapp.com/id/381
