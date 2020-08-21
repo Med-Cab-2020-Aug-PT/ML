@@ -27,9 +27,9 @@ _August 2020_
 
 ### Random Strain Object
 - https://medcabin.herokuapp.com/random
-- https://medcabin.herokuapp.com/random/type/sativa
-- https://medcabin.herokuapp.com/random/effect/happy
-- https://medcabin.herokuapp.com/random/flavor/sweet
+- https://medcabin.herokuapp.com/random-by-type/sativa
+- https://medcabin.herokuapp.com/random-by-effect/happy
+- https://medcabin.herokuapp.com/random-by-flavor/sweet
 
 ### List of Names by Category
 - https://medcabin.herokuapp.com/effects
@@ -37,9 +37,9 @@ _August 2020_
 - https://medcabin.herokuapp.com/types
 
 ### List of Names by Subcategory
-- https://medcabin.herokuapp.com/effect/happy
-- https://medcabin.herokuapp.com/flavor/sweet
-- https://medcabin.herokuapp.com/type/sativa
+- https://medcabin.herokuapp.com/strains-by-effect/happy
+- https://medcabin.herokuapp.com/strains-by-flavor/sweet
+- https://medcabin.herokuapp.com/strains-by-type/sativa
 
 ### Five Most Similar Strains - NLP KNN Model
 - https://medcabin.herokuapp.com/nearest/wedding-cake

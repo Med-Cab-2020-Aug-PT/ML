@@ -174,32 +174,4 @@ def after_request(response):
 
 
 if __name__ == '__main__':
-    """
-    ## Local Routes:
-    
-    ### Primary URL
-    - http://127.0.0.1:5000/
-    
-    ### Strain Object Lookup Tables
-    - http://127.0.0.1:5000/strain-by-id/381
-    - http://127.0.0.1:5000/strain-by-name/fruit-loops
-    
-    ### Random Strain Object
-    - http://127.0.0.1:5000/random-by-type/sativa
-    - http://127.0.0.1:5000/random-by-effect/happy
-    - http://127.0.0.1:5000/random-by-flavor/sweet
-    
-    ### List of Names by Category
-    - http://127.0.0.1:5000/types
-    - http://127.0.0.1:5000/effects
-    - http://127.0.0.1:5000/flavors
-    
-    ### List of Names by Subcategory
-    - http://127.0.0.1:5000/strains-by-effect/happy
-    - http://127.0.0.1:5000/strains-by-flavor/sweet
-    - http://127.0.0.1:5000/strains-by-type/sativa
-    
-    ### Five Most Similar Strains - NLP KNN Model
-    - http://127.0.0.1:5000/nearest/wedding-cake
-    """
     Ring.run(debug=True, port=5050)
