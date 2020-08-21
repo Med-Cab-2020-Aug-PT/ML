@@ -3,6 +3,7 @@ Data Science Unit 4 Build Week
 Robert Sharp
 August 2020
 """
+import pickle
 from collections import defaultdict
 from typing import List
 from Fortuna import random_value, FlexCat
@@ -15,11 +16,16 @@ class StrainData:
     __slots__ = (
         'data', 'effect_lookup', 'flavor_lookup', 'type_lookup', 'id_lookup',
         'name_lookup', 'random_by_type', 'random_by_effect', 'random_by_flavor',
+        'tfidf', 'nearest_one'
     )
 
     def __init__(self, filename):
         # Temporary Raw Data
         df = pd.read_csv(filename)
+
+        # Pickled Models
+        self.tfidf = pickle.load(open('../pickles/tfidf.pickle', 'rb'))
+        self.nearest_one = pickle.load(open('../pickles/nearest.pickle', 'rb'))
 
         # Initialize Lookup Tables
         self.data = df.to_dict(orient='records')      # List[Dict {Key: Value}]
@@ -56,6 +62,12 @@ class StrainData:
             {k: v for k, v in self.flavor_lookup.items()},
             val_bias='truffle_shuffle',
         )
+
+    def recommend(self, user_input):
+        """ Default Endpoint - Search Route"""
+        target = self.nearest_one.kneighbors(
+            self.tfidf.transform([user_input]).todense())
+        return dict(self.data[target[1][0][0]])
 
     def random_strain(self) -> dict:
         """ Returns a random Strain

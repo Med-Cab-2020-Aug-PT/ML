@@ -1,7 +1,7 @@
 # MedCab
 ### Cannabis Suggestion Bot
 #### Jisha Obukwelu & Robert Sharp
-_August 2020_
+_August 2020_ 
 
 
 ## Cannabis Strain: JSON Object

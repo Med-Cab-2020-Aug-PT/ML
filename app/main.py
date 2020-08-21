@@ -8,22 +8,24 @@ from app.data import StrainData
 
 
 """ One Ring to rule them all, and in the darkness - bind them! """
+filename = '../data/cannabis.csv'
 Ring = Flask(__name__)
-Ring.data = StrainData(filename='data/cannabis.csv')
+Ring.data = StrainData(filename)
+
+
+@Ring.route('/<user_input>')
+def recommend(user_input):
+    """ Search Route """
+    return jsonify(Ring.data.recommend(user_input))
 
 
 @Ring.route('/')
 @Ring.route('/random')
 def index():
-    """ Default Endpoint - Returns a random Strain
+    """ Returns a random Strain
     @return: JSON object
     """
     return jsonify(Ring.data.random_strain())
-
-
-# @Ring.route('/recommend/<user_input>')
-# def recommend(user_input: str):
-#     return jsonify(Ring.data.recommend(user_input))
 
 
 @Ring.route('/strain-by-id/<idx>')
@@ -208,4 +210,4 @@ if __name__ == '__main__':
     ### Five Most Similar Strains - NLP KNN Model
     - http://127.0.0.1:5000/nearest/wedding-cake
     """
-    Ring.run(debug=True)
+    Ring.run(debug=True, port=5050)
