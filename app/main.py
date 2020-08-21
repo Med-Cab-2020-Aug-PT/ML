@@ -71,7 +71,7 @@ def strain_flavors():
     return jsonify(Ring.data.flavors_list())
 
 
-@Ring.route('/effects/<effect>')
+@Ring.route('/effect/<effect>')
 def strains_by_effect(effect):
     """ Returns a list of Strain names.
     @param effect: str
@@ -81,7 +81,7 @@ def strains_by_effect(effect):
     return jsonify(Ring.data.strains_by_effect(clean_name))
 
 
-@Ring.route('/flavors/<flavor>')
+@Ring.route('/flavor/<flavor>')
 def strains_by_flavor(flavor):
     """ Returns a list of Strain names.
     @param flavor: str
@@ -90,7 +90,7 @@ def strains_by_flavor(flavor):
     return jsonify(Ring.data.strains_by_flavor(flavor.title()))
 
 
-@Ring.route('/types/<strain_type>')
+@Ring.route('/type/<strain_type>')
 def strains_by_type(strain_type):
     """ Returns a list of Strain names.
     @param strain_type: str
