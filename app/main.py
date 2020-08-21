@@ -99,7 +99,7 @@ def strains_by_type(strain_type):
     return jsonify(Ring.data.strains_by_type(strain_type.title()))
 
 
-@Ring.route('/random-by-type/<strain_type>')
+@Ring.route('/random/type/<strain_type>')
 def random_by_type(strain_type):
     """ Random Strain by Type
     @param strain_type: str
@@ -110,7 +110,7 @@ def random_by_type(strain_type):
     )
 
 
-@Ring.route('/random-by-effect/<effect>')
+@Ring.route('/random/effect/<effect>')
 def random_by_effect(effect):
     """ Random Strain by Effect
     @param effect: str
@@ -122,7 +122,7 @@ def random_by_effect(effect):
     )
 
 
-@Ring.route('/random-by-flavor/<flavor>')
+@Ring.route('/random/flavor/<flavor>')
 def random_by_flavor(flavor):
     """ Random Strain by Flavor
     @param flavor: str
