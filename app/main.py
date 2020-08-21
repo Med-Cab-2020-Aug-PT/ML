@@ -13,7 +13,7 @@ Ring = Flask(__name__)
 Ring.data = StrainData(filename)
 
 
-@Ring.route('/<user_input>')
+@Ring.route('/search/<user_input>')
 def recommend(user_input):
     """ Search Route """
     return jsonify(Ring.data.recommend(user_input))
@@ -28,7 +28,7 @@ def index():
     return jsonify(Ring.data.random_strain())
 
 
-@Ring.route('/strain-by-id/<idx>')
+@Ring.route('/id/<idx>')
 def strain_by_id(idx: str):
     """ Strain Details, Id Lookup Table
     @param idx: String, index of desired strain
@@ -37,7 +37,7 @@ def strain_by_id(idx: str):
     return jsonify(Ring.data.strain_by_id(idx))
 
 
-@Ring.route('/strain-by-name/<name>')
+@Ring.route('/<name>')
 def strain_by_name(name: str):
     """ Strain Details, Name Lookup Table.
     @param name: String
@@ -45,14 +45,6 @@ def strain_by_name(name: str):
     """
     clean_name = name.replace('-', ' ').title()
     return jsonify(Ring.data.strain_by_name(clean_name))
-
-
-@Ring.route('/strains')
-def strains():
-    """ Returns a List of Strain Dicts,
-        ordered by Rating highest to lowest
-    @return: JSON Obj: List[Dict] """
-    return jsonify(Ring.data.data)
 
 
 @Ring.route('/types')
@@ -79,7 +71,7 @@ def strain_flavors():
     return jsonify(Ring.data.flavors_list())
 
 
-@Ring.route('/strains-by-effect/<effect>')
+@Ring.route('/effects/<effect>')
 def strains_by_effect(effect):
     """ Returns a list of Strain names.
     @param effect: str
@@ -89,7 +81,7 @@ def strains_by_effect(effect):
     return jsonify(Ring.data.strains_by_effect(clean_name))
 
 
-@Ring.route('/strains-by-flavor/<flavor>')
+@Ring.route('/flavors/<flavor>')
 def strains_by_flavor(flavor):
     """ Returns a list of Strain names.
     @param flavor: str
@@ -98,7 +90,7 @@ def strains_by_flavor(flavor):
     return jsonify(Ring.data.strains_by_flavor(flavor.title()))
 
 
-@Ring.route('/strains-by-type/<strain_type>')
+@Ring.route('/types/<strain_type>')
 def strains_by_type(strain_type):
     """ Returns a list of Strain names.
     @param strain_type: str
